@@ -1,0 +1,147 @@
+@font-face {
+    font-family: 'ibm';
+    src: url('Geo-Regular.ttf') format('truetype');
+}
+body{
+	font-size: 20px;
+	font-family: 'ibm', sans;
+	background-color: black;
+}
+#text{
+	font-size: 20px;
+	font-family: 'ibm'
+	color: white;	
+}
+#menu {
+ font-size: 20px;
+ margin: auto;
+ text-align: center;
+ width: 770px;
+ border: 1px solid #9516d3;
+}
+#banner {
+ font-size: 20px;
+ margin: auto;
+ text-align: center;
+ width: 770px;
+ border: 1px solid blue;
+}
+#bar{
+ text-align: center;
+ background-color: blue;
+ font-size: 20px;
+ padding: 2px;
+ border-top: 2px solid blue;
+ border-bottom: 2px solid blue;
+}
+#bar a {
+    display: inline-block;
+    margin-right: 8px;
+}
+a {
+    text-decoration: node;
+    color: inherit;
+    text-decoration-line: none;
+    text-decoration-color: none;
+}
+
+a:hover {
+    text-decoration: node;
+    color: #02146b;
+    text-decoration-line: none;
+    text-decoration-color: none;
+}
+
+table {
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+td {
+    text-align: left;
+}
+
+td:first-child {
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+li {
+    margin: 0 10px;
+}
+
+.hl {
+    text-decoration: none;
+    transition: color 0.3s ease; 
+}
+
+.hl:hover::before,
+.hl:hover::after {
+    content: "[";
+    color: #356ef6;
+}
+
+.hl:hover::after {
+    content: "]";
+}
+.hidden {
+    display: none;
+}
+.column {
+    vertical-align: top;
+    margin-right: 20px;
+}
+#bare {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.category {
+    flex: 1;
+    min-width: 250px;
+    margin: 10px; 
+    border: 1px solid #ccc; 
+    padding: 10px;
+   	display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.category a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    width: 100%;
+}
+.content {
+    text-align: left;
+    color: white;
+}
+
+.author {
+    text-align: right;
+    color: blue;
+}
+.lol {
+    text-decoration: none;
+    transition: color 0.3s ease; 
+    color: blue;
+}
+
+.lol:hover::before,
+.lol:hover::after {
+    content: ">";
+    color: #356ef6;
+}
+
+.lol:hover::after {
+    content: "<";
+}

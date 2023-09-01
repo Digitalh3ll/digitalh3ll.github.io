@@ -1,0 +1,102 @@
+@font-face {
+    font-family: 'ibm';
+    src: url('Geo-Regular.ttf') format('truetype');
+}
+body{
+	font-size: 20px;
+	font-family: 'ibm', sans;
+	background-color: black;
+}
+#text{
+	font-family: 'ibm'
+	color: white;	
+}
+#menu {
+ margin: auto;
+ text-align: center;
+ width: 770px;
+ border: 1px solid #9516d3;
+}
+#banner {
+ margin: auto;
+ text-align: center;
+ width: 770px;
+ border: 1px solid #9516d3;
+}
+#bar{
+ font-size: 20px;
+ text-align: center;
+ background-color: #9516d3;
+ padding: 2px;
+ border-top: 2px solid #9516d3;
+ border-bottom: 2px solid #9516d3;
+}
+a {
+    text-decoration: node;
+    color: inherit;
+    text-decoration-line: none;
+    text-decoration-color: none;
+}
+
+a:hover {
+    text-decoration: node;
+    color: #630591;
+    text-decoration-line: none;
+    text-decoration-color: none;
+}
+
+table {
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+td {
+    text-align: left;
+}
+
+td:first-child {
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+li {
+    margin: 0 10px;
+}
+
+.hl {
+    text-decoration: none;
+    transition: color 0.3s ease; 
+}
+
+.hl:hover::before,
+.hl:hover::after {
+    content: "[";
+    color: purple;
+}
+
+.hl:hover::after {
+    content: "]";
+}
+
+.hd:hover::before,
+.hd:hover::after {
+    content: ">";
+    color: purple;
+}
+
+.hd:hover::after {
+    content: "<";
+}
+#bar a {
+    display: inline-block;
+    margin-right: 8px;
+}
+
+
