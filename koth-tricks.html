@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body{
+            background-color: black;
+        }
+        a{
+            text-decoration: node;
+            color: red;
+            text-decoration-line: none;
+            text-decoration-color: none;
+        }
+        a:hover{
+            text-decoration: node;
+            color: red;
+            text-decoration-line: none;
+            text-decoration-color: none;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koth Tricks</title>
+</head>
+<body>
+<pre style="color: white">
+[ K0th Tr1cks ]
+[ By Detrew   ]
+
+
+                                    o
+                                   $""$o
+                                  $"  $$
+                                   $$$$
+                                   o "$o
+                                  o"  "$
+             oo"$$$"  oo$"$ooo   o$    "$    ooo"$oo  $$$"o
+o o o o    oo"  o"      "o    $$o$"     o o$""  o$      "$  "oo   o o o o
+"$o   ""$$$"   $$         $      "   o   ""    o"         $   "o$$"    o$$
+  ""o       o  $          $"       $$$$$       o          $  ooo     o""
+     "o   $$$$o $o       o$        $$$$$"       $o        " $$$$   o"
+      ""o $$$$o  oo o  o$"         $$$$$"        "o o o o"  "$$$  $
+        "" "$"     """""            ""$"            """      """ "
+         "oooooooooooooooooooooooooooooooooooooooooooooooooooooo$
+          "$$$$"$$$$" $$$$$$$"$$$$$$ " "$$$$$"$$$$$$"  $$$""$$$$
+           $$$oo$$$$   $$$$$$o$$$$$$o" $$$$$$$$$$$$$$ o$$$$o$$$"
+           $"""""""""""""""""""""""""""""""""""""""""""""""""""$
+           $"                 King Of The Hill                 o
+           $"$"$"$"$"$"$"$"$"$"$"$"$"$"$"$"$"$"$"$"$"$"$"$"$"$$
+
+<-------------------->
+
+[1] Reconhecimento Rapido
+[2] Ataque Rapido e Efetivo
+[3] Ataque Interno Rapido
+[4] Defesa Rapida e efetiva
+[5] Notas A mais
+
+<-------------------->
+<a style="color: red">[Marquei Coisas Importantes E links Em vermelho para ajudar A Visualizar :)]</a>
+
+<a style="color: blue">[1]</a> (Reconhecimento Rapido e Efetivo)
+
+Uma Das maneiras que vai te fazer poupar tempo e fazer um scanner de portas mais efetivo seria usando O <a href="https://github.com/RustScan/RustScan">rustscan</a>, O rustscan brevemente falando é um PortScanner Moderno Mais Rapido que O nmap
+Fazendo Verifica todas as portas de 65k em 3 segundos, Tornando ele otimo para Koth Aonde Cada Segundo Importa, Uma otima ideia que caiba tanto em Koth e Ctf seria usar Primeiramente o RustScan
+E logo Apos O nmap, Fazendo com que o PortScanner seja mais preciso no final das contas, alem da rapides do Rustscan ele tem suporte aos mecanismo de scripts do nmap.
+Ok Agora Na Parte Web Como Fuzzing De diretorios e outras coisas eu atualmente uso o gobuster para fuzzing de diretorios e de subdominios, De wordlists Eu uso as wordlsits do dirb, mais as Sec-List
+São outra alternativa que eu uso que é viavel O Link Dessas Wordlists é (<a href="https://github.com/00xBAD/kali-wordlists">https://github.com/00xBAD/kali-wordlists</a>).
+
+<a style="color: blue">[2]</a> (Ataque Rapido e Efetivo)
+
+Em algumas maquinas que o caminho é sempre embaralhado como as maquinas do Koth Do tryHackMe Sempre Tenha Em mente Sobre a maquina que Voce For jogar, Marque detalhes importantes e salve coisas que nunca mudam, Tem algumas maquinas
+que Tem a senha Aleatoria, Ou portas Aleatorias, assim forçando o jogador A ter que Fazer O mesmo Caminho toda A vez para pegar A senha Novamente, Fazendo anotações Você ja vai saber oque Fazer tento Uma Vantagem, Alem que isso Seria
+Diferente que Usar Coisas Proibidas como Autopwn Nessas maquinas que precisam de bruteforce de algum serviço minha dica é apenas aumentar as threads caso vc queira logue em uma AttackBox Do TryHackMe Pois la Isso é mais Rapido, pois
+não Se limita a uma Vpn, Sobre Quebra De zips EU sempre uso O Fcrackzip nos parametros: 
+-v (verbose)
+-u (usar o unzip)
+-D (atque de dicionario)
+-p (Selecionar a wordlist)
+No final o codigo ficara: 
+
+<a style="color: red">======================================</a>
+dem0n@h3ll:~$ fcrackzip -v -u -D -p /usr/share/wordlists/rockyou.txt teste.zip
+
+found file 'senha.txt', (size cp/uc     45/    33, flags 9, chk bbf3)
+
+
+PASSWORD FOUND!!!!: pw == tomolis
+<a style="color: red">======================================</a>
+Sobre Hashs O john seria uma boa Mais Antes de Usar O John Use Um Script que eu Uso chamado <a href="https://github.com/s0md3v/Hash-Buster">HashBuster</a>, Ele Procura essa Hash em meio a varias que ja foram quebradas é otimo para Ctf/Koth em geral
+Sempre é Otimo Revisar Tambem a sua velocidade em cada Partida Pratique Sua digitação em comandos e outras coisas para economizar tempo.
+
+<a style="color: blue">[3]</a> (Atque Interno Rapido)
+Okay Agora Na maquina como um usuario commun, um mero www-data ou um usuario normal, oque fazer nessa situação que eu quero que a Escalação de Privilegios seja o mais rapida suificiente?
+Oh meu caro alem de obviamente Você Decorar/Salvar Os Metodos De Escalação que a maquina tem Tem Um Exploit que Em Quase Todas As maquinas Possue No Koth Do TryHackMe, O exploit que eu estou me referindo é o PwnKit Um exploit que Atua
+Explorando Uma Vunerabilidade Do pkexec do Polkit, Mais Mais Detalhadamente Oque Seria um Polkit?
+O Polkit é um componente para controlar privilegios em todo o sistema em sistemas operacionais semelhantes ao Unix. Ele fornece uma maneira organizada de processos não privilegiados se comunicarem com projetos privilegiados (root),
+Tambem é possivel usar o polkit para executar comandos como root (se voce tiver a permissão de root).
+porem graças a equipe da qualys eles descobriram uma vunerabilidade de corrupção de memória no pkexec do polkit, um Programa SUID-root instalado por padrao em todas as principais distro Linux. Essa vunerabilidade pode fazer qualquer
+usuario "normal" Virar Um usuario Root em poucos segundos, e bom eu estou falando esse texto todo é por que ele funciona na maioria das maquinas do Koth Do TryHackMe, Caso Outra Pessoa Esteja Na maquina sempre esteja com seu Exploit
+pronto para ser lançado pois bom essa seria a hora perfeita para usalo (se ele não foi corrigido) o link do artigo usado e do exploit no github são esses:
+https://github.com/ly4k/PwnKit <-- exploit
+https://blog.qualys.com/vulnerabilities-threat-research/2022/01/25/pwnkit-local-privilege-escalation-vulnerability-discovered-in-polkits-pkexec-cve-2021-4034 <-- mais sobre o Pwnkit
+
+<a style="color: blue">[4]</a> (Defesa Rapida E efetiva)
+Okay Estamos com root, Com o nosso Nickname No king.txt agora como Agente Pode fazer com que o king.txt fique mais seguro?
+Uma Das Dicas que Agente podera fazer para proteger o arquivo é usando o Chattr Chattr é um binario do linux que ele é usado para modificar atributos do linux como setar arquivos para ele não serem escritos
+Isso pode parecer facil para voce que joga direto e ja sabe como tirar mais para pessoas novas que estao começando é otimo saber para você não se encucar na suas partidas, mais como eu vou usar o chattr?
+simples aqui esta a baixo uma lista dos atributos que voce pode usar em situações no Koth.
+<a style="color: red">=======================================</a>
+
+dem0n@h3ll:~$ chattr +i king.txt
+|----[i: Imutavel: Impede que o arquivo seja Renomeado Excluido ou Removido]
+dem0n@h3ll:~$ chattr +a king.txt
+|----[a: Apenas adição: Permite a adição de dados em um arquivo, mas não permite que o conteúdo existente seja alterado ou excluído]
+dem0n@h3ll:~$ chattr +t king.txt 
+|----[t: Taper-proof: Previne a substituição de arquivos através de links simbólicos]
+
+<a style="color: red">======================================</a>
+Esses são oque voce mais vai usar em suas partidas bom é meio que obvio mais vale resautar que + addiciona e - remove (vai que alguem não sabe)
+Sempre Lembre-se de Corrigir as falhas por onde você entrou e por onde você sabe que tem acesso, como Suid, ou coisas no /etc/sudoers como permisoes perigosas, lembrese de sempre mudar as senhas dos usuarios para uma senha segura.
+Use Sempre Scripts para altomatizar a proteção de coisas obvias, alem que caso voce queira, mude a porta ssh e outras para confundir o adiversario
+Lembrese de que caso alguem Entre na maquina ou voce sinta que alguem entrou na maquina use uma online Para Matar todos Os usuarios(com tty) de uma só vez!
+
+<a style="color: red">=======================================</a>
+MY=$(tty|cut -d"/" -f4);for L in $(seq 40);do [ $MY == $L] && { echo "Live"; } || { echo "oiii :) te achei" > /dev/pts/$L; pkill -9 -t pts/$L 2>/dev/null; };done 2>/dev/null; echo "[ Killed... ]"
+<a style="color: red">=======================================</a>
+
+Essa payload é muito boa e esta presente na minha backdoor Feita em python (https://github.com/Detrew/f-root-backdoor)
+logo apos isso verifique se alguem colocou alguma persistencia dentro como alguma backdoor, olhe portas estranhas na maquina usando netstat -anpt e cheque por atividade suspeita usando o pspy(https://github.com/DominicBreuker/pspy)
+Apos isso Lembre-se que você pode ser tirado do podio então sempre tenha uma backdoor ou algum outro metodo para voltar a maquina, um deles é uma backdoor pelo systemd,
+upando um serviço que rodara sempre na maquina enquanto ele tiver ativo, olhe tambem o /etc/systemd/system/ e veja se tem algum serviço suspeito rodando na maquina, veja se tambem existe outro tipo de entrada pela web
+como alguma vunerabilidade ou algo exposto, lembrese de que isso é valido para caso voce não tenha rootkits, pois caso a pessoa tenha algum rootkit, vai ser mais dificil bloquear a persistencia dela
+
+
+<a style="color: blue">[5]</a> (Notas A mais)
+
+Okay Vamos A umas Notas que possivelmente não vai ajudar mais deve fazer voce tirar boas risadas em partida com seus amigos Uma Delas é O comando Wall Que envia uma Mensagem A todas as Shells
+Voce pode Combinar esse comando ao pipe do linux possibilitando você a mandar Ascii arts para todos com tty Exemplo:
+
+root@h3ll:~# cat ascii.txt | wall 
+
+Alem que Caso voce queira mandar uma mensagem de boas vindas coloque sua mensagem no /etc/motd para que a cada usuario que logar ele vai mandar uma msg de boas vindas :D
+alem que caso queira trolar seu amigo modificando arquivos sempre leve um arquivo troll do chattr e coloque na maquina, ou modifique o arquivo .bashrc do root e faça com que cada vez que a pessoa digite algo ele faça algo
+totalmente diferente, um exemplo seria:
+
+alias echo='echo "\n STOP ECHO!\n" && exit'
+ou algo semelhante
+
+
+é isso espero que essas dicas te ajudem nos seus proximos jogos de Koth Fiquem Bem e Adios :)
+
+________________
+
+<a style="color: red" href="../">[VOLTAR AO INICIO]</a>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body{
+            background-color: black;
+        }
+        a{
+            text-decoration: node;
+            color: red;
+            text-decoration-line: none;
+            text-decoration-color: none;
+        }
+        a:hover{
+            text-decoration: node;
+            color: red;
+            text-decoration-line: none;
+            text-decoration-color: none;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rfid Hacking</title>
+</head>
+<body>
+<pre style="color: white">
+                            ,▄▄▄████▓▓▓▓▓▓▓████▄▄,
+                       ¿▄█▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█▄µ
+                   ,▄█▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█▄,
+                ,▄█▓▓▓▓▓▓▓▓▓▓▀╜"              ²╙▀▓▓▓▓▓▓▓▓▓▓▓▄,
+              ç█▓▓▓▓▓▓▓▓▀╙                          ²▀▓▓▓▓▓▓▓▓█▄
+            ,█▓▓▓▓▓▓▓▀          ,ç▄▄▄▄██▄▄▄▄ç,          ▀▓▓▓▓▓▓▓▓µ
+            ]▓▓▓▓▓▓"       ,▄█▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█▄µ       `▀▓▓▓▓▓M
+             `▀▀▀       ▄█▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█▄       ▀▀▀"
+                     ,█▓▓▓▓▓▓▓▓▓▓▀▀²"    "²╙▀▓▓▓▓▓▓▓▓▓▓█,
+                    ▐▓▓▓▓▓▓▓▓╜                  ²▀▓▓▓▓▓▓▓▌
+                    ▐▓▓▓▓▓▀         ,çççµ,         ²▓▓▓▓▓▀
+                      ²╙`      ç▄█▓▓▓▓▓▓▓▓▓▓█▄ç       ²²
+                            ,▄▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█,
+                            ▓▓▓▓▓▓▓▓▀▀▀▀▀▀▓▓▓▓▓▓▓▓
+                            Ñ▓▓▓▓▀          ²▓▓▓▓▀
+                                      ,,
+                                   ¡█▓▓▓▓█µ
+                                   ▓▓▓▓▓▓▓▓
+                                   Ñ▓▓▓▓▓▓▓ <a style="color: blue">RFID Hacking</a> 
+                                            [By: Detrew & Deadline]
+
+
+[1] Introdução
+
+Sabe quando você vai ao supermercado e vê aqueles produtos com uma etiqueta pequena colada neles,
+ou quando você usa um transporte publico e paga com a sua identificação de estudante?
+Bem, essas cartões fazem parte de um sistema chamado RFID.
+
+[2] Oque é RFID?
+
+RFID significa Identificação por Radiofrequência (em inglês, Radio Frequency Identification). É uma tecnologia que permite a identificação e o rastreamento de objetos por meio de sinais de radiofrequência.
+Ao contrário dos códigos de barras tradicionais, o RFID não requer contato direto para a leitura e pode capturar informações de forma rápida e eficiente.
+O sistema RFID é composto por três Elementos principais:
+
+- Leitor e um software de gerenciamento de dados. A tag RFID contém um chip eletrônico e uma antena, responsáveis por armazenar e transmitir informações através das ondas de rádio.
+Essas tags podem ser de diferentes tipos, como tags passivas (que não possuem bateria própria e são ativadas pelo campo eletromagnético do leitor) ou tags ativas (que possuem bateria própria e podem transmitir informações)
+
+- O leitor RFID é o dispositivo responsável por emitir ondas de rádio e captar os sinais enviados pelas tags. Ele também pode ser conectado a um computador ou a um sistema central para processar as informações coletadas.
+O software de gerenciamento de dados permite armazenar, organizar e analisar as informações coletadas pelas tags RFID.
+
+[3] Como funciona? (breve explicação)
+
+O cartão é equipado com uma etiqueta especial chamada tag RFID, Essa tag contém um pequeno chip e uma antena.
+Quando um leitor RFID próximo à tag emite um sinal de rádio, a antena da tag captura essa energia, Com a energia recebida
+o chip da tag é ativado e transmite as informações armazenadas nele de volta para o leitor.
+O leitor recebe essas informações e pode usá-las para identificar o objeto, como um número de série, por exemplo. 
+
+[4] Como Clonar Um Sinal Rfid Usando Arduino
+existem situações onde equipes de redteam e pesquisadores estão trabalhando com um ambiente, e se deparam com portas com controle de acesso, 
+esses sistemas são muito usado em empresas, locais privados de acesso exclusivo a funcionários, o que geralmente eles costumam fazer é clonar a
+identificação de um funcionário, para conseguir acesso a tal local restrito.
+
+Para Clonar Um sinal de rfid vamos usar o Arduino Uno Existe Kits que Varia Entre 60 Reais Que Ja vem Com Cabo Mais Você vai precisar dos seguintes itens abaixo Para conseguir clonar o rfid:
+
++ arduino Ide (nosso lugar aonde Agente Vai Por Os Codigos No Arduino)
+|_[https://www.arduino.cc/en/software]
+
++ Uma placa Rfid Com leitor Rfid (RC522)
+|_[https://produto.mercadolivre.com.br/MLB-3284451049-kit-modulo-leitor-rfid-nfc-rc522-com-tag-e-carto-1356mhz-_JM]
+
++ Cabos Jumper (Fêmea-macho)
+|_[https://produto.mercadolivre.com.br/MLB-1884942498-cabo-wire-jumper-20cm-40-fios-fmea-macho-protoboard-arduino-_JM]
+
++ Protoboard (opcional)
+|_[https://produto.mercadolivre.com.br/MLB-1771949168-protoboard-830-furos-breadboard-830-pontos-_JM]
+
+Não Vou me Estender No arduino Ide pois Esse não é o foco do paper e sim mostrar como rfid funciona!
+
+Okay temos tudo isso agora então mão na massa e vamos Montar O projeto!
+O Pin Layout Do arduino é Bem Simples Alem Que Não Precisa de muitas coisas
+o grafico dos Pinos são esses
+______________________
+|[RC522]     [Arduino]|
+/---------------------\
+|RST/Reset         [9]|
+|SS               [10]|
+|MOSI             [11]|
+|MISO             [12]|
+|SCK              [13]|
+\---------------------/
+Feitos Essas Conexôes O seu Arduino Ja Deve Estar Conectado A Placa De Rfid no arduino Agora Vamos Rodar Um codigo de teste!
+Vamos Rodar Um Que ele Faz o dump das informações do cartão rfid aproximado
+
+[=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=]
+#include <SPI.h>
+#include <MFRC522.h>
+
+#define RST_PIN         9    
+#define SS_PIN          10     
+
+MFRC522 mfrc522(SS_PIN, RST_PIN);  // Cria A instancia Do MFRC522
+
+void setup() {
+	Serial.begin(9600);		// Inicia a comunicação com o computador
+	while (!Serial);		// Não faça nada se nenhuma porta serial for aberta (adicionado para Arduinos baseados em ATMEGA32U4)
+	SPI.begin();			// Barramento SPI de inicialização
+	mfrc522.PCD_Init();		// Inicialização MFRC522
+	delay(4);				// Dalay Opcional
+	mfrc522.PCD_DumpVersionToSerial();	// Mostrar detalhes de PCD - MFRC522 Card Reader detalhes
+	Serial.println(F("Examine o PICC para ver os blocos de UID, SAK, tipo e dados..."));
+}
+
+void loop() {
+	// Redefina o loop se nenhuma nova placa estiver presente no sensor/leitor. Isso economiza todo o processo quando ocioso
+	if ( ! mfrc522.PICC_IsNewCardPresent()) {
+		return;
+	}
+
+	// Selecione um dos cartões
+	if ( ! mfrc522.PICC_ReadCardSerial()) {
+		return;
+	}
+
+	// Despejar informações de depuração sobre o cartão; PICC_HaltA() é chamado automaticamente
+	mfrc522.PICC_DumpToSerial(&(mfrc522.uid));
+}
+[=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=]
+Logo Apos Isso Faça O Upload Do codigo No seu Arduino Ide E pronto! ele esta carregado e pronto para uso, veja nos logs do arduino Ide Se Ele esta Fazendo o Dump Das informações do Cartão
+O cartão Normalmente Vai dumpar As Informações Dele Em Hexadecimal e o UID da Etiqueta.
+Okay Temos Um codigo De Dump E o UID Mais Aonde esta O codigo De Clonar O rfid? Okay Temos O nosso setup ja montado do Arduino Então Apenas vamos usar outro codigo para upar a UID desse outro cartão No cartão que você queira
+
+O codigo é muito grande então vou deixar o raw do github da pessoa que fez isso e ele tem outro repo com varios exemplos de RFID que é otimo para estudo
+https://raw.githubusercontent.com/miguelbalboa/rfid/master/examples/ChangeUID/ChangeUID.ino <-- mudar A uid 
+https://github.com/miguelbalboa/rfid <--- Repositorio de exemplos
+
+Caso Você não queira comprar um arduino e tudo isso para clonar um rfid você pode comprar ferramentas pre feitas para isso e destinada para clonagem de rfid 
+um exemplo deles é o Handheld de baixo custo que esta um otimo preço [https://pt.aliexpress.com/item/1005005484002157.html?spm=a2g0o.cart.0.0.41cb7f06q4mUgu&mp=1&gatewayAdapt=glo2bra]
+
+Claro que eu recomendo o Arduino pois ele vai ter um lek de possibilidades para futuros projetos
+
+                                 _ _           _                            _               _                      _        
+                                | (_)         | |                          | |             (_)                    | |       
+  _____  ___ __   __ _ _ __   __| |_ _ __   __| | ___        ___ ___  _ __ | |__   ___  ___ _ _ __ ___   ___ _ __ | |_ ___  
+ / _ \ \/ / '_ \ / _` | '_ \ / _` | | '_ \ / _` |/ _ \      / __/ _ \| '_ \| '_ \ / _ \/ __| | '_ ` _ \ / _ \ '_ \| __/ _ \ 
+|  __/>  <| |_) | (_| | | | | (_| | | | | | (_| | (_) |    / (_| (_) | | | | | | |  __/ (__| | | | | | |  __/ | | | || (_) |
+ \___/_/\_\ .__/ \__,_|_| |_|\__,_|_|_| |_|\__,_|\___/      \___\___/|_| |_|_| |_|\___|\___|_|_| |_| |_|\___|_| |_|\__\___/ 
+          | |                                                                                                                        
+          |_|                                                                                                                    
+
+<a href="../" style="color: red">[VOLTAR AO INICIO]</a>
