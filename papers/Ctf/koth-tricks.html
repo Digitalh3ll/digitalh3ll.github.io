@@ -124,7 +124,7 @@ Use Sempre Scripts para altomatizar a proteção de coisas obvias, alem que caso
 Lembrese de que caso alguem Entre na maquina ou voce sinta que alguem entrou na maquina use uma online Para Matar todos Os usuarios(com tty) de uma só vez!
 
 <a style="color: red">=======================================</a>
-MY=$(tty|cut -d"/" -f4);for L in $(seq 40);do [ $MY == $L] && { echo "Live"; } || { echo "oiii :) te achei" > /dev/pts/$L; pkill -9 -t pts/$L 2>/dev/null; };done 2>/dev/null; echo "[ Killed... ]"
+MY=$(tty|cut -d"/" -f4);for L in $(seq 40);do [ $MY == $L ] && { echo "Live"; } || { echo "oiii :) te achei" > /dev/pts/$L; pkill -9 -t pts/$L 2>/dev/null; };done 2>/dev/null; echo "[ Killed... ]"
 <a style="color: red">=======================================</a>
 
 Essa payload é muito boa e esta presente na minha backdoor Feita em python (https://github.com/Detrew/f-root-backdoor)
