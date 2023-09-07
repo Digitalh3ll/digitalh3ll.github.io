@@ -79,15 +79,16 @@ Assim como a Chave Simétrica, a Assimétrica também tem seus problemas. A util
 para desencriptação de mensagens acaba por elevar o tempo computacional dos algoritmos de criptografia assimétrica,
  tornando inviável o seu uso em uma comunicação frequente.
 
-<a style="color: blue">[4]</a> AMBOS OS TIPOS
+<a style="color: blue">[4]</a> Misturando Ambos Algorítmos
 
-Ambos os tipos de Chaves  tendo suas vantagens e desvantagens, assim foi originados algorítimos que combinam ambos tipos de chaves, eliminando assim, suas desvantagens.
-Os protocolos TLS (Transport Layer Security) e SSL (Secure Sockets Layer) são exemplos dessa junção. Para eliminar o problema do segredo estabelecido
-previamente da chave simétrica e o alta demanda computacional necessária na chave assimétrica. Assim fizeram de forma em que seja utilizada primeiro a criptografia assimétrica, 
-autenticando assim os laços e combinando uma chave secreta para utilizar futuramente na criptografia simétrica. Como o algoritmo de chave pública garante que a negociação foi 
-realizada em um canal seguro, não havendo a necessidade da troca da chave como na Chave Simétrica, todo o restante do processo pode passar a ser realizado 
-utilizando algoritmos de chave simétrica, o que diminui potencialmente a necessidade da demanda computacional, permitindo seu uso em uma comunicação mais intensa
-(problemas encontrados na Chave Assimétrica).
+Ambos os tipos de Chaves tem suas vantagens e desvantagens, assim foram originados algorítmos que combinam ambos os tipos de chaves, eliminando assim, suas desvantagens.
+Os protocolos TLS (Transport Layer Security) e SSL (Secure Sockets Layer) são exemplos dessa junção. Para eliminar o problema do segredo estabelecido previamente da chave 
+simétrica e o alta demanda computacional necessária na chave assimétrica. Assim fizeram de forma em que seja utilizada primeiro a criptografia assimétrica, autenticando 
+assim os laços e combinando uma chave secreta para utilizar futuramente na criptografia simétrica. Como o algoritmo de chave pública garante que a negociação foi realizada
+em um canal seguro, não havendo a necessidade da troca da chave como na Chave Simétrica, todo o restante do processo pode passar a ser realizado utilizando algoritmos de chave
+simétrica, o que diminui potencialmente a necessidade da demanda computacional, permitindo seu uso em uma comunicação mais intensa (problemas encontrados na Chave Assimétrica).
+
+
 
 
 Escrito por Arthur Mendes (Belt)
