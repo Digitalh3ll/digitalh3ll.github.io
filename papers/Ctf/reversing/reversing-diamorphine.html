@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body{
+            background-color: black;
+        }
+        a{
+            text-decoration: node;
+            color: red;
+            text-decoration-line: none;
+            text-decoration-color: none;
+        }
+        a:hover{
+            text-decoration: node;
+            color: red;
+            text-decoration-line: none;
+            text-decoration-color: none;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICS hacking</title>
+</head>
+<body>
+<pre style="color: white">
+<a style="color: red">[Reversing Diamorphine.ko - Cyberpsychosis]</a>
+[by n1nja]
+
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⠁⣶⣶⣶⣶⣶⣶⣖⡶⣶⣶⣶⣶⣶⣖⣶⣶⣶⣶⣶⡶⣶⣶⣶⣶⡦⣶⡶⣦⣴⣶⣶⣶⣶⣶⣶⣶⣶⣶⣖⣶⣴⢶⣶⣶⣶⡆⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⠀⣿⣝⣿⣿⣿⣷⣿⡟⣿⣿⣿⣿⣭⣿⣿⣿⣿⣿⣿⣿⣿⣯⡻⣫⣏⢻⢯⣿⣿⣯⣿⣿⣻⣿⣿⣿⡿⣾⣿⣿⣿⣿⣿⣻⢿⡇⣟⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⠀⣿⣿⣿⣷⣻⣿⣯⣱⢻⣿⣿⣿⣿⣿⣿⣿⡿⡿⣿⣿⣟⣋⣒⣈⣛⣂⣛⣻⣿⣿⣟⣿⣿⣿⣿⣽⣧⣍⡽⣟⣿⣿⣿⣿⢿⡇⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⠀⣿⣿⣿⣷⣦⡲⢦⣶⣆⣖⣢⣾⣼⣿⣿⣿⣯⣿⣿⣿⠷⢟⡻⢟⢿⢿⣿⣿⣿⣿⣿⠿⣿⣿⣯⣿⣾⣾⣿⣿⣿⣿⣿⣿⣫⡇⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⡀⣿⣿⣿⣿⣿⡟⡷⣩⡱⡼⡿⣽⣿⣿⣽⣗⣿⣿⡿⠃⠐⠂⡬⢢⢆⠖⠘⡟⡇⢇⢡⠀⠈⠀⡹⢾⣿⣻⣿⣿⡟⡿⣿⣺⣝⡇⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⡇⡿⢽⢾⣿⣿⡵⣾⣿⣿⣶⣽⡿⣿⣻⡿⠉⢻⣿⡏⠉⣨⠍⢧⠶⠗⡲⡀⠃⡑⠘⢄⣂⣐⣰⡁⠔⢻⣿⣟⣿⣿⣹⣻⣿⢿⡇⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⡇⡿⡿⣝⢿⣿⣿⡿⣯⣯⢿⣟⣿⣿⠟⠃⢸⣆⣿⣿⡁⣀⠔⠋⠀⢝⢀⠨⠀⣠⣶⡿⠟⢻⣿⢷⣀⣉⣿⣟⣧⣧⣶⢦⣾⣿⡇⢲⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⠃⣿⣿⡯⣷⣿⣷⣿⣿⣿⣽⡿⠋⠀⢀⡀⢸⣿⣿⣿⣿⠃⠁⠠⠐⠊⡀⠈⢹⠁⠉⣠⣴⣿⣿⣾⢒⢲⣿⣯⣽⣴⣧⣿⣿⣽⡇⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⠀⣿⣾⡿⣿⣿⣽⣿⣿⣿⠋⢀⠊⠀⠁⡇⠈⣿⣿⣿⣾⡷⢆⡒⢄⢐⠎⠀⣄⣠⣾⣿⣿⣿⡿⠏⣢⣿⡿⢿⣿⣽⣾⣿⣿⣿⡇⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⠀⣷⣿⣿⣿⣿⣿⣾⣿⠃⡠⠁⠀⡈⠀⢹⡀⠘⣿⣿⣿⣷⣒⣁⠌⠀⠀⡀⢾⣿⣝⣛⣛⣝⣴⣾⣿⡏⣶⡀⠻⣾⣿⣿⣿⣿⡇⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⠀⣷⣿⣏⣿⣿⣛⣿⠃⡐⠀⠀⢀⠁⠀⠀⠵⣄⣼⡿⠿⡟⣆⡀⠄⣠⣾⢓⠁⠿⣿⣿⣿⣿⣿⣳⣽⠿⢛⣀⠀⠈⠙⢿⣿⣿⡇⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⠀⣿⣿⣿⣿⣿⣿⠇⠰⠀⠀⠀⠸⡀⣠⡶⣟⠡⣂⠄⠀⠁⣙⣂⢦⠣⠅⢠⠀⠀⠋⠚⢻⠻⣿⣏⣠⠴⠋⠀⢳⠀⠄⠄⢻⣿⡇⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⠀⣯⣿⣿⣿⣿⣿⢀⠃⠀⠀⡀⡆⠐⡷⢼⠁⠑⠒⡯⢧⢠⣭⣿⣵⠡⠐⠂⠀⠈⠈⠈⠐⠁⠊⠛⢷⣄⠀⠀⠀⠁⠐⠈⡄⢹⡇⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⠀⣾⣿⣿⣿⣿⡇⡘⠀⠀⠝⠀⣇⣶⠑⠂⠀⠄⣀⠡⠷⣿⠬⢞⠉⠉⢘⣥⡀⢀⠀⠀⠀⠀⢠⡤⡀⢻⡆⠀⠀⠂⠀⠀⢰⠀⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⠃⣯⣿⣿⣿⣿⠀⠇⠀⠀⠀⢀⡟⡙⡄⡐⠊⣡⠢⣊⠴⠁⠀⠠⠉⢢⣀⣙⣷⠻⣂⡔⠀⢀⠃⢠⠁⢸⡇⠀⠀⢴⠂⠐⠈⡀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⠀⣯⡿⣿⣿⣿⢸⠀⠀⠀⠀⡾⢴⠛⠻⡮⣴⢿⠩⠁⠀⠤⠀⠈⢀⣐⣿⢏⡟⠕⠗⠓⠊⠁⢴⠃⠀⣸⡇⠀⠀⠀⡄⠀⠄⡇⠸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⠀⣽⣾⣿⣿⡇⢸⠀⠀⠀⣸⠃⠈⠠⠀⠙⠀⡨⠜⣣⠖⢙⠒⠒⠒⢙⠏⠀⠀⠀⠀⠀⢀⣼⡧⡀⢸⣿⠤⡄⢀⠁⡇⠉⠂⠧⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⠀⣿⣿⣿⣿⡇⠘⠁⠀⠱⡏⠀⠀⣀⣴⡬⣗⠻⣚⠕⠀⠸⣒⠠⡀⠰⠀⢠⠀⠀⢀⣴⡿⠻⠛⠕⡮⢀⣱⠇⠀⠀⡇⠀⠀⡀⢠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⡇⣿⣷⣿⣿⡇⠀⠀⠀⠀⠻⢥⠼⠗⠚⢻⡇⢀⣶⢭⣀⠒⠊⠀⠈⠢⢀⠘⠄⠀⡘⠈⠁⠁⠀⡤⢺⡟⠀⠀⠀⠀⡇⠀⠀⡇⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⠇⣿⣿⣽⣿⡇⢸⠀⠀⠀⠀⠀⠀⠀⠀⢸⣧⠟⠓⢀⡬⠀⠀⠀⠀⡀⢩⣻⡛⠀⠱⣂⣀⡤⣾⠃⣺⣅⣀⠀⠀⠀⡇⠀⠀⠃⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⠀⣿⡿⡽⣿⣧⢸⠀⠀⣴⠞⠫⡭⠝⣷⢾⠟⢧⣐⠁⠲⣂⡤⠤⡽⣳⣶⣤⣷⡔⠀⣏⢑⠓⠃⢒⡟⢤⢈⢷⡀⠀⠃⠀⢸⠀⣿⣫⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⡆⣿⡿⣮⣿⣿⠈⡄⢾⠧⣦⣦⡏⠑⢯⡳⣧⡀⠈⢉⠛⠒⠾⠾⠓⠛⠉⠉⠙⡼⡄⠻⣦⣤⣤⣞⢅⡢⣨⠈⣧⠀⠀⠀⡆⢰⡏⢯⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⡆⣟⣲⣿⣿⣿⡀⠁⢸⣰⢄⣃⢟⢝⡻⣿⢼⢷⣣⠄⡐⢀⠀⠒⠃⠀⠀⢤⠍⡜⣌⠀⠈⠑⠅⡨⠐⣊⠸⠲⢟⢹⠃⢰⠁⣼⡇⣀⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⡇⣿⣿⣿⣾⣷⡇⣤⠘⣧⣙⣓⠮⢸⠆⡏⢛⠻⣿⣷⣷⣘⡆⢀⡠⣔⣬⣼⣾⣧⠟⣳⠦⠤⠜⢏⠒⠢⡀⠀⣫⣾⠀⠇⢰⣿⡇⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⡇⣿⣿⣿⣿⡞⣿⠻⠶⢮⣿⣯⣙⠇⢄⠀⠀⠙⠸⣶⠻⡽⣻⣷⣿⡻⣽⡳⡿⠁⠬⠣⠁⠀⡠⣸⠀⠀⠠⠈⣼⠃⡘⠀⣾⣿⡇⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⠁⣿⣿⣿⣻⣿⢄⠠⢈⡒⠚⣹⡿⣶⣔⣎⠀⠀⢠⢹⣿⣧⡇⣯⣇⡇⣷⣷⢁⠊⠀⡈⢂⣔⣜⠿⠩⢲⣆⣀⣿⠀⠁⣰⣿⢿⡇⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⠀⣷⣭⣿⣿⠰⡀⠑⠁⠠⣶⡋⣠⠿⠟⣦⣪⡠⡀⠀⣯⡳⡷⣧⣓⡪⣫⠏⠃⢀⣵⡔⢷⡝⡠⡩⠄⠂⠠⢾⣧⠀⢀⣿⣿⣿⡇⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⢿⡿⡂⣿⡿⢿⣿⠅⢀⣰⡤⣶⠿⢿⢏⠘⣶⣿⣻⣮⣢⡒⣽⣟⢾⣹⣯⣾⣋⡢⢂⣮⣴⣾⡿⢏⠲⡑⢂⠄⠀⠀⣿⡄⣼⣿⣿⣿⡇⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⢻⠈⠳⣷⣿⣿⡿⠍⠉⠁⡁⡩⡑⢈⡾⢰⣾⣿⣿⣿⣿⣷⣦⡟⣳⣟⢝⢝⠑⣴⣿⣻⣿⠋⡄⡇⣳⠿⠚⢀⠘⣕⠀⣿⣿⣿⣿⣿⡇⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣧⡑⡄⠈⣿⣿⡏⠂⠃⠀⠐⢍⢪⣪⡢⡃⢻⣿⣿⡿⠿⠿⢟⠪⢲⡟⡯⡢⡱⠻⡿⣿⠇⣰⠟⠫⢒⣑⣠⣀⣀⠆⡀⢈⢿⣿⣿⣿⡇⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⡗⡇⠀⢸⣿⡃⠇⠀⠐⣦⢬⣄⣚⠛⠴⢼⣿⣇⡫⡿⢵⣶⠻⣸⣿⣿⢋⣷⢹⠯⣼⣶⠋⢀⣴⣿⡀⠒⠠⢂⡀⡂⢕⡫⣻⣯⣿⡅⢹⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⢣⠁⢀⣿⡟⠄⢸⠀⣜⠀⢈⡠⣰⣶⣤⣔⢝⠿⡄⢳⣸⣟⣼⠿⡻⣿⣼⣿⣾⣱⠏⣚⣫⣿⣿⣿⣷⡂⠄⠀⠀⡠⡀⡀⠀⡻⣿⣃⣘⣛⡻⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣏⠇⠀⣾⣿⠨⠀⠀⠑⠒⣌⠁⠀⣿⣯⣿⣿⣽⣷⣞⡱⢎⡻⢗⣺⢸⡚⡿⠯⠶⣓⣾⣿⣿⣿⣿⣿⣿⣿⠢⡀⠀⠘⠁⢀⠄⠀⠀⠀⣉⠉⠈⣢⢻⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⢸⡆⢸⣿⡏⠀⠀⠀⢀⠘⠃⠀⡜⣿⣿⣾⣿⣿⣽⣿⣿⣿⡏⢱⣦⣥⣷⠀⣿⣿⢸⣷⣿⣿⣿⡿⣿⣟⣾⣯⡀⠀⢀⡠⡂⠀⢀⣴⡏⠀⢉⠀⢨⢸⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⢸⠇⠸⣿⣗⠀⡠⠈⠚⠛⠊⢴⠂⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣌⠛⠛⢋⣴⣿⣿⢸⣼⣽⣿⣷⣽⣿⢿⣿⣟⣇⢸⡉⠚⠦⣀⣼⣯⡇⠤⠊⢀⢜⣾⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣧⡫⣠⢈⠁⠈⠁⠀⠀⠀⠃⠘⡼⣿⣿⢿⣿⣟⣿⣿⣿⣷⣿⣷⡿⣿⣿⡿⢻⣿⣿⣷⣾⣯⣿⢿⣷⣽⠛⠏⣈⣦⢩⢖⡦⣤⣀⣀⣀⠤⢔⣩⣾⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⠆⣿⣶⡂⠀⣀⣀⣠⣴⣬⣬⣾⣛⣿⣿⣿⣷⣿⣿⣿⣿⣾⣿⣿⣿⣟⣟⣿⢽⣽⣟⣵⢾⣿⣾⣿⣳⣎⠉⠉⠑⠊⣑⣼⣿⣿⡃⣟⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⠀⣿⣿⣿⣶⣦⣬⣅⣪⣷⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⠿⠷⢟⣿⣷⣾⢪⣿⣟⣯⠿⠿⠿⠿⠯⠭⣭⣭⡭⠭⢭⣌⣥⣭⡇⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⠀⣿⣿⣿⣿⣭⣭⣭⣭⣽⣿⣻⡿⠿⠿⠿⠟⠿⠭⠽⠿⣭⡭⠭⠿⠭⢭⡭⡬⣭⡯⣿⣿⢿⣻⢻⣿⣛⣟⣻⣛⣟⡿⣿⣿⣿⡇⣷⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⠀⣶⣶⣶⣶⣶⣶⣿⣿⣿⢽⢿⣿⣻⣿⣿⡿⣿⣿⣩⣭⣍⣭⣭⣽⣟⣿⣿⣿⣿⣷⣿⢭⣽⣿⣿⣯⢿⣽⡿⣿⣽⣿⣿⣿⢿⡇⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⠀⣿⠉⠉⠉⠉⠍⡉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠙⠉⠍⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⢹⡇⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⠀⣿⠀⠀⠀⣠⡄⠀⢹⣉⠷⢸⡁⢹⠀⡟⢦⡏⢸⡧⣎⠀⠀⠀⠀⣿⣹⠆⢠⢻⡆⠈⢧⡰⣧⡜⠐⠯⣅⠀⠀⢤⡄⠀⠀⢸⡇⢾⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⠀⣿⠀⠀⠀⠀⠀⠀⠘⠂⠀⠈⠓⢎⠀⠓⠈⠃⠐⠓⠘⠒⠀⠀⠀⠛⠀⠀⠒⠀⠛⠂⠘⢁⠘⠁⠈⠒⠚⠀⠀⠀⠀⠀⠀⢸⡇⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣇⠿⠶⠶⠶⠶⠶⠶⠶⠶⢶⠶⠶⠶⠾⠷⠶⠶⠶⠶⠶⠾⠶⠶⠶⠶⠶⠶⠶⠶⠶⠷⠶⠶⠾⢶⠶⠾⠶⠶⠶⠶⠶⠶⠶⠾⢇⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣾⣿⣷⣾⣿⣿⣿⣷⣾⣿⣿⣾⣾⣿⣷⣶⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+
+
+<a style="color: blue">[1]</a> Introdução
+
+Olá, eu sou o n1nja.
+
+Talvez você já me conheça pelas ruas escuras da comunidade Digital h3ll :)
+Bem, hoje vou compartilhar com vocês um write-up do desafio Cyberpsychosis criado pelo MatheuZ Security. O link da room estará <a href="https://app.hackthebox.com/challenges/cyberpsychosis">aqui.</a>
+
+<a style="color: blue;">[2]</a> Reversando o diamorphine.ko
+
+Após baixarmos o zip do diamorphine, temos então o diamorphine.ko. Uma explicação básica do que seria o .ko (Kernel Object) mas se trata de um arquivo (módulo) que pode ser carregado no kernel do linux.
+
+O Diamorphine é um rootkit criado pelo m0nad. Ele possui algumas funções bastante interessantes e podemos acompanhá-las no repositório do GitHub do <a href="https://github.com/m0nad/Diamorphine">m0nad.</a>
+
+<img src="image1.png" alt="Image" />
+
+Abrindo o ghidra, vamos analisar o diamorphine.ko
+
+<img src="image2.png" width="80%" alt="Image" />
+
+Vamos analisar as funções do diamorphine.
+
+<img src="image3.png" alt="Image" />
+
+Perfeito, encontramos duas funções que podem nos fornecer o que nós precisamos para conseguir atingir o nosso objetivo.
+
+Vamos analisar a função hacked_kill. Podemos notar nela algumas informações muito interessantes.
+
+<img src="image4.png" alt="Image" />
+
+Convertendo esses dois hexadecimais, obtemos dois resultados que serão muito importantes para resolvermos o nosso desafio.
+
+<img src="image5.png" alt="Image" />
+
+<img src="image6.png" alt="Image" />
+
+Agora vamos pegar o endereço do desafio e conectar no servidor pelo netcat.
+
+<img src="image7.png" alt="Image" />
+
+Já dentro do servidor, vamos executar os comandos do diamorphine de uninstall. Observando os hexadecimais acima, podemos notar que eles serão os valores que devemos executar no comando kill.
+
+<img src="image8.png" alt="Image" />
+
+Pow! Acertamos, agora temos um registro nos logs do kernel do diamorphine. Vamos então agora executar o próximo comando utilizando o valor 64.
+
+<img src="image9.png" alt="Image" />
+
+Gg, conseguimos rootar! :) Não vou apresentar a flag justamente para não tirar a graça de vocês tentarem executar todo esse processo também! 
+
+Enfim, é isso. Até a próxima!
+
+
+                                                                                             ~ N1nja left.
