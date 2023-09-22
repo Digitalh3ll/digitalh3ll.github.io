@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,18 +17,16 @@
             text-decoration-line: none;
             text-decoration-color: none;
         }
-        .code-container {
-            background-color: black;
-            border: 1px solid #ff0000;
-            padding: 10px;
-            overflow-x: auto;
-            max-width: 600px;
-            max-height: 400px;
-        }
-        code {
-            display: block;
-            white-space: pre;
-        }
+		.box-container {
+	        display: flex;
+	    }
+	     code{
+	     	border: 2px solid white;
+	     	padding: 10px;
+	     	margin: 5px;
+	     	display: inline-block;
+	     	white-space: pre;
+	     }
     </style>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -38,7 +35,7 @@
 </head>
 <body>
 <pre style="color: white">
-[Um guia basico sobre anonimato]
+[Um guia sobre anonimato]
 [By: Detrew]
 
     .-.__.-.__.-.__.-._.-.
@@ -46,30 +43,35 @@
      "-"(  Criptografar   )"
          "-"(  Meu boot  )
              '-..-"-..--'
-                    O 
-               ,_    o   
-        ____    \"\___,-'7 
-____..-"_.-"|   )     (/ 
-|   |====    |   a_ /@  E 
-|## |====    | =: T ::= )   __ 
+                    O
+               ,_    o      __[Detrew]
+        ____    \"\___,-'7 /
+____..-"_.-"|   )     (/
+|   |====    |   a_ /@  E
+|## |====    | =: T ::= )   __
 |## |====    |   \/\   <,  {__\
-|___|====____|    7"\_// \    \\  
-  _/____\_     /( (@)   \      ))
- '.,____,.'-.,( \_____ ) \    //
+|___|====____|    7"\_// \    \\
+  _/____\_      /( (@)   \      ))
+ '.,____,.'-., / \_____ ) \    //
   ._ _        | (((__ ~   ) _//
     Y       = |      '-,_    /
     | __,..--"'          "-,/
 
 
 
-Ola amigos Hoje vou tentar explicar um pouco sobre segurança digital e algumas medidas que eu tomo no dia a dia e que Vocês poderiam aderir em seu dia a dia tmb... 
+Ola amigos Hoje vou tentar explicar um pouco sobre segurança digital e algumas medidas que eu tomo no dia a dia e que Vocês poderiam aderir em seu dia a dia tmb...
 vamos falar sobre varios topicos envolvendo segurança segue abaixo os que vão ser explicados e detalhados:
  ____________________________
 /                            \
 |1 Navegadores (Web Browsers) |
-|2 VPN                        |
-|3 Serviços de Email          |
-|4 Criptografia de disco      |
+|2 Tor [config/tricks]        |
+|3 Confiança em empresas      |
+|4 Serviços de Email          |
+|5 GPG E PGP                  |
+|6 Como ultilizar GPG         |
+|6 Criptografia de disco      |
+|7 Comprar Com Segurança      |
+|8 Boas praticas (finalização)|
 \____________________________/
 lembrando que eu vou tentar explicar ao max sobre alguns topicos, então é isso caso fique muito grande o texto :D dito isso vamos começar.
 
@@ -84,7 +86,7 @@ vai ter a possibilidade de filtrar pelas opçoes anteriores.
 isso é louco né? saber que você pode ser rastreado ate por isso, de um lado isso é incrivel e de outro é assustador, mas existe varias maneiras de burlas isso e eu vou mostrar e explicar por que alguns outros navegadores não são otimos para isso.
 Minha recomendação para um navegador Seguro seria o <a href="https://librewolf.net/">LibreWolf</a>, Ele é um navegador baseado no firefox aonde ele foca em ter o Maximo de privacidade, fazendo a maioria dos metodos de fingerprint cair por terra >:)
 ele tem Anti Telemetria por padrão fazendo esses metodos de fingerprint não ocorrer, fora que ele corta anuncios e etc.. ele vem junto com search engines focadas em privacidade como duckduckgo, searchx e qwant, ele possue o plugin Ublock-origin por padrão
-fazendo aumentar mais ainda a sua privacidade, fora que ele é totalmente customizavel pois ele é opensource 🎉 e esta disponivel no <a href="https://codeberg.org/librewolf">codeberg</a>, fora que ele é leve rapido e facil de mexer.. 
+fazendo aumentar mais ainda a sua privacidade, fora que ele é totalmente customizavel pois ele é opensource 🎉 e esta disponivel no <a href="https://codeberg.org/librewolf">codeberg</a>, fora que ele é leve rapido e facil de mexer..
 agora vamos para algumas coisas que eu sei que alguns vão perguntar.
 <a style="color: purple">Por que não o Brave?</a>
 O brave tem seus altos como ele tentar esconder realmente seu fingerprint digital usando tecnicas boas, mais só isso não é lah algo bom, fora que ele tem uma parceria com outros sites que la o brave abre as portas para rastreadores
@@ -94,85 +96,261 @@ o Opera tem seus bons motivos por ser algo leve e feito para gamers, mais vamos 
 o librewolf possue, como alguns metodos de esconder seu fingerprint.
 Obvio que existe algumas maneiras melhores, você mesmo pode me chamar para avisar sobre algumas ficarei feliz em descobrir e aprender mais sobre isso!
 
-<a style="color: blue">[2]</a> VPN
+<a style="color: blue">[2]</a>  Tor (The Onion Routing)
 
-Sobre VPN vamos entender um pouco sobre VPN e sobre seus lados positivos e negativos, e minhas recomendações de vpns que focam em privacidade e segurança.
-Vamos falar sobre os lados positivos de usar uma vpn.
-<a style="color: green">[+]</a> um que varios vão citar é o obvio que é a possibilidade de acessar qualquer coisa usando um ip que não é seu e sim do servidor da VPN isso vai esconder seu IP
-<a style="color: green">[+]</a> outro ponto possitivo é a liberação de conteudo exterior, acessar conteudo que esta bloqueado no seu pais, isso ajuda muito pessoas de paises autoritarios.
-<a style="color: green">[+]</a> vpn tmb ajuda a dar uma cortonada no firewall para que você consiga acessar tal conteudo sem ser bloqueado. (sim eu sei é a mesma coisa do topico acima)
+Tor ou The Onion Route, foi criado pelo laboratio naval dos estados unidos, ele foi em meados dos anos 90 para que possa ser mais anonimo fazer conexões a outros servidores, pois naquela epoca era facilmente possivel acontecer ataques MITM
+por causa desse motivos e mais, ele foi criado, para tentar deixar você mais seguro na sua conexão e transmissão de dados. ele foi chamado de Onion Routing por causa que o metodo de funcionamento dele foi criado para ele fazer varias conexões
+em Servidores Randomicos, Essa conexão é feita atravez de um circurto atravez de 3 maquinas por padrão (você podera mudar caso queira), não vou querer me extender muito sobre a historia do tor e sim quero mostrar como melhorar
+sua segurança digital usando o TOR, vou falar sobre algumas tricks e como configurar para ficar mais anonimo e essas coisas ;)
+Vamos nos colocar em um cenario, você esta entrando na sua faculdade que la O ISP bloqueia acesso ao um site, mais você como espertinho ultilizou Tor e conseguiu entrar no site.. porem dia seguinte você volta a tentar acessar o mesmo site com TOR
+e se depara com ele bloqueando Tambem o TOR, bom isso deve acontecido pois ele bloqueou o ip do IP guarda fazendo que a conexão não terminasse, bom isso acontece muito pois existe muitos ISP que tem varios e varios dados sobre IPS do TOR para bloquear
+as conexões.. bom você poderia ultilizar as Bridges :D
 
-agora que falei os pontos possitivos vamos falar os pontos negativos de usar uma vpn
+- Oque muda das Bridges para o ip do tor normal?
+As Bridges ultilizam um ip Privado, tornando mais dificil de bloquear fazendo isso ser uma exelente opção caso esse cenario ocorra
+- Como Ultilizar uma Bridge pelo tor browser?
+Para usar uma bridge do tor Abra o navegador Tor, e coloque esse link "about:preferences#connection" em seguida va em bridges e va em [Select a Built-in Bridge]
+e por la você podera escolher entre:
+Obsf4 (Default): que deixa seu tor com um trafico com dados aleatorio, mais que talvez não funcione para você
+Snowflake: Snowflake é um projeto aonde as proxies são voluntarias.. ou seja é quase uma proxy fresquinha voluntariamente!
+MEEK: o Meek é um bridge para casos mais estremos, ele ultiliza um fronting de dominio em que parece que você esta usando um dominio da azure e puxando um switcharoo clandestino
+para o nó guardian do tor assim torna muito mais dificil de um ISP achar que isso esta na rede tor :)
+Depois de Selecionar um desses só ativar a opção Use Current Bridges e prontinho, obvio que a conexão pode ficar lenta, mais isso vai ajudar a burlar aquela pessoa que tenta bloquear o seu tor
+- Ativei mais ainda sou bloqueado.. (caso extremo)
+Bom caso você more em algum pais que deve ter a rede mais censurada que tudo, você pode pedir bridge novas para o tor mandando um email para bridges@torproject.org
+Solicitando uma bridge, ou visitando o site bridges@torproject.org e seguindo as instruções..
 
-<a style="color: red">[+]</a> lentidão a cada request, sim isso varia de internet a internet porem isso acontece na maioria dos casos dependendo da região.
-<a style="color: red">[+]</a> Confiabilidade No provedor da vpn, isso pode rolar dependendo da vpn que você usa mais creio que isso não vai acontecer com as provedoras que eu vou te mostrar
-<a style="color: red">[+]</a> bloqueio em alguns serviços, isso pode acontecer dependendo da provedora da vpn caso o ip seja ja manjado eles vão bloquear sua request assim você vai ter que procurar outra vpn para usar
+Bom acho que seguindo isso você podera sim usar tor, mais tocando no assunto de Emails vamos falar em breve mais vamos nos colocar em um topico muito importante agora.. as empresas que você confia.
 
-porem com essas vpns que eu vou mostrar, seus problemas acima devem acabar.
+<a style="color: blue">[3]</a> Confiança em empresas
 
-<a style="color:blueviolet" href="https://www.urban-vpn.com/">Urban-vpn</a>
-Urban vpn é uma Vpn de graça e focada em privacidade possuindo servidores em quase todo mundo! alem disso ela não vende seus dados nem precisa de dados sensiveis para acessar a Vpn
-fora que eles funciona em varias plataformas, e tem uma otima velocidade, ele pode rodar no Openvpn, e tem o numero ilimitado de conexões, e ele não pega dados da sua navegação para vender para terceiros.
+Quero falar desse topico pois esse topico é o motivo de ter um tutorial desses, tem muita pessoa que acredita fielmente em empresas pensando que esta seguro pois eles dizem ter uma politica no-logs
+Ou que eles não atuam no seu pais assim fica impossivel juridicamente de você ter seus dados comprometidos por ordem judicial... as vezes é assim, porem em alguns casos nem sempre é oque te digam, não acredite em apenas um Tos
+falando essas babozeiras, um serviço que realmente presa pela segurança deve alem de falar, mostrar e comprovar essas coisas. uma dessas empresas que eu posso citar é a proton, eu não confio 100% nela por alguns motivos
+um deles é que existe sim pessoas que foram descoberta usando protonmail, um jornalista foi preso na frança em 2021, e logo apos o ProtonMail deletou a parte "we don't log your Ip" na TOS deles..
+eu por si só ja não uso mais os serviços da proton..
+outro tambem que tem essa mesma coisa é o tutanota, mais eles deixam visivel nas TOS que eles vão ter que agir em questão sobre governos etc...
+Vpns como as que eu citei anteriormente, tem a mesma pira de mudar as TOS sem avisar e isso é um perigo total.. então eu não confiaria 100% em uma empresa só por causa das notas dela em um site especifico ou por que um cara random
+do reddit falou "é seguro", recomendo pesquisar a fundo sobre a empresa que você usa, se ela ja fez um desses vacilos etc.
 
-<a style="color: blueviolet" href="https://protonvpn.com/">ProtonVPN</a>
-Proton Vpn é outro serviço incrivel de VPN pela empresa proton, eles tem uma otima criptografia e eles presam a liberdade, primeiramente a vpn do proton é usada para jornalista e ativistas que querem ficar anonimo na internet
-proton é como se fosse a casa deles, Liberdade e segurança em um só lugar! e eles tem a politica de No-Logs! e roda em OpenVPN e outros client, alem que ele pode rodar atravez do TOR assim melhorando mais ainda sua segurança!
-realmente uma vpn otima, ela esta sediada na Suiça aonde tem uma das politicas de privacidade mais rigorosas do mundo, aonde esta fora juristação dos estados unidos e não é membro da rede de vigilância dos 14 olhos :)
+<a style="color: blue">[4]</a> Serviços de Email
 
-eu iria apresentar mais porem, acho que essas são as que mais me cativam a usar a proton é boa em muita coisa porem tem servidores na sua maioria lotados e algumas vezes o seu ip é barrado
-mais são otimas vpns eu usei ambas e gostei do desepenho.. 
+Falando ja da Proton vou falar sobre os serviços de email que eu uso e que bom, cada um tem seus fortes e fracos, então fique livre para escolher qual se encaixa melhor com você.
+<a style="color: purple" href="disroot.org">[Disroot]</a>
+Disroot é uma org criado em 2015 por ativistas que presam a privacidade, segurança e o anonimato, eles tem varias alternativas de coisas que você usa no dia a dia como um pesquisador para navegador que no caso deles é o <a href="https://search.disroot.org/">Search</a>
+eles possuem tambem um sistema de envio de arquivo chamado <a href="https://upload.disroot.org/">Luffy</a> mais enfim, o email deles possuem um sistema de entrada peculiar você precisa responder uma pesguntas para solicitar uma conta no disroot, assim sendo um processo "seletivo"
+pois eu não tive dificuldade nenhuma para entrar, então é.. ela é boa mais não tenho 100% de certeza que é a melhor
 
-<a style="color: blue">[+]</a> Serviços de Email
-enfim falamos sobre vpn e browsers, falta falar de muita coisa ainda sendo agora a vez de falar sobre Serviçoes de email, se você ainda usa google mail.. recomendo descartar ele e trocar para outros emails que irei falar mais a abaixo
-vou falar sobre emails seguros e com politicas de privacidade exelente que eu uso, sempre tenha mais de 1 email, niguem sabe o dia de amanha!
+<a style="color: purple" href="https://onionmail.org/">[OnionMail]</a>
+Onionmail é um email que funciona apenas pelo TOR e que é feito pelo propio projeto do Tor browser, ele tem esse lado positivo de funcionar apenas pelo TOR, não precisa de nenhum dado sensivel para criar uma conta
+fora que você podera encriptar suas mensagem usando PGP nativamente, ele é otimo porem tem esse "lado negativo" dele operar apenas em tor, fazendo a conexão ser lenta, mais é um preço a se pagar para ter uma vida mais anonima
+eles tem planos gratuitos e pagos, que eu acho normal ate porem tenho medo deles não dar muito apoio aos usuarios de planos gratuitos..
+eu não ultilizo porem de 1 vista me parece um serviço otimo.
 
-<a style="color: blueviolet" href="https://tutanota.com/">Tutanota</a>
-Tutanota é um email criptografado da alemanha e que esta online desde de 2011! aonde eles tem uma criptografia unica e é opensource, alem que ele não vende seus dados para terceiros, cada ip acessado não é rastreavel ele.
-isso pode ser pontos positivos porem algo que eu não curti muito foi, a parte que caso a alemanha envie uma ordem judicial valida para eles eles são obrigados e entregar seus dados :(
-<a style="color: purple">"</a>Todo o conteúdo textual é criptografado para o usuário e seus parceiros de comunicação de forma que nem mesmo a Tutao GmbH tenha acesso aos dados.<a style="color: purple">"</a> 
-<a style="color: purple">"</a>Com exceção dos dados de pagamento, não divulgaremos os seus dados pessoais, incluindo o seu endereço de e-mail, a terceiros. No entanto, podemos ser legalmente obrigados a fornecer dados de conteúdo (no caso de uma ordem judicial alemã válida) e dados de inventário aos serviços do Ministério Público..<a style="color: purple">"</a>
-Isso foi tirado dos <a href="https://tutanota.com/terms#privacy">termos de serviço</a> do tutanonta, isso é uma recomendação para você que não faz coisas ilegais :)
+<a style="color: purple" href="https://riseup.net/">[Riseup] (INVITE ONLY)</a>
+Riseup é um belo exemplo de email privado, ele possue varias coisas que alem do email temos um file upload semelhante ao disroot e uma vpn propia, wiki, pad e muitas coisas que estão disponiveis
+a Vpn é gratuita porem o Email Você só consegue sendo convidado por outro usuario que ja ultiliza a plataforma, isso é incrivel pois assim limita a entrada de muitas pessoas.
+fora os meios que ele tem de criptografia de ponta para deixar suas mensagem mais anonimas, no-logs, essas coisas é realmente otimo, eu infelizmente não tenho mais conheco muitas pessoas que ultilizam e falam apeans coisas boas sobre
+é nem tudo que é bom é facil de se conseguir.
 
-<a style="color: blueviolet" href="https://disroot.org">Disroot</a>
-Ah meu Xodô em questão de grupo, Disroot é um grupo que foi criado em 2015 por um grupo de ativistas e entusiastas da privacidade online, que buscam fornecer uma alternativa aos serviços dessas bigtechs da vida, ele é opensource e criptografado!
-alem que para ter um email como eu tenho Detrew@disroot.org você precisa fazer uma avaliação para entrar, eles excluem os logs em um periodo finito de tempo, e ele não vende suas informações com terceiros, e quando eles fazem isso eles precisam do seu consentimento
-ou seja se você não quiser eles não vão :D fora que eles tem varios serviços fora esse de email, eles tem serviçõs de pesquisa como o <a href="https://search.disroot.org/">Search</a> do disroot e o <a href="https://upload.disroot.org/"></a>luffy para upload de arquivos com criptografia :D
+<a style="color: purple" href="https://cock.li/">[Cock.li] (INVITE ONLY)</a>
+Sendo um email que tambem é invite only cock.li se parece que foi criado por um grupo da zueira cheio de shitpost, e piadas em todas as suas maneiras de se expressar, o email é invite only mais é ate que um pouco facil arrumar brasileiros que tenham
+eu mesmo possuo um graças a um amiguinhu -w-, e sinceramente.. as opções de dominio são otimas huew huew huew para passar uma imagem otima é esse email que você vai querer, eles tem mais coisas como eles podem ser usados para conversar em xmpp
+e outras coisas que eu amei! eles tem serviços de vps tambem e funcionam na rede tor! mais tem o seu site na surface tambem... é daora porem eles mesmo deixam claro que <b>Atuam na LEI</b> então.. privacidade, sim crimes não!
 
-<a style="color: blueviolet" href="https://protonmail.com">Protonmail</a>
-seguindo a familia proton, estamos com o proton mail, um email criptografado ponta a ponta, com suporte a onion e os outros recursos acima que eu citei na parte da Vpn
-mais falando da parte de email. o email tem o conteudo gerado do usuario é criptografado e nem o propio site pode descriptografar segundo a <a href="https://proton.me/legal/privacy">TOS</a> do protonmail.. 
-protonmail é uma otima pedida para você que acha que o governo pode estar olhando seus emails sobre receita de bolo.
+Recomendado esses Emails vamos para outra parte que seria explicando sobre GPG e PGP suas diferenças e como ultilizar cada uma delas
 
-é isso, sobre a parte de emails eu acho que esta otimo ter passado para falar sobre emails, agora vamos falar sobre criptografia de disco.
+<a style="color: blue">[5]</a> GPG E PGP
+
+Bom vamos começar com PGP pois é com ele que vamos dessenrolar o GPG.
+PGP é um software originalmente escrito por Phil Zimmermann que resumidamente o software pgp é um software para assinatura digital para arquivos, mensagens, emails, e discos.
+ele foi teve uma popularidade bem rapido por ser um software seguro e de graça, e ultilizando de criptografia de chave simetrica, o pgp tem algumas coisas que talvez apartir de outros softwares
+como a criptografia do protocolo kerberos usada para autenticar usuarios em uma rede e criptografia ssl, em geral pgp ultiliza de uma combinação de critpografia, uma por uma chave privada
+e outra por uma chave publica, bom vou tentar dar um exemplo de como pgp funciona mais para frente ultilizando o terminal :D
+enfim explicado sobre PGP, pegue tudo isso que voce viu sobre PGP e mude algumas coisas, o exemplo é que GPG é uma versão que ultiliza sim coisas do PGP porem modifica algumas coisas para deixa-lo melhor!
+um exemplo é que ele é ultilizado BEEM mais que o PGP, fora que ele tem a diferença que o PGP ultiliza do algoritimo RSA e IDEA e o GPG ultiliza dos algoritimos NIST e AED por padrão.
+alem que o GPG é da GNU pelo propio nome *duh.. enfim vamos ir para oque interessa que é como ultilizar GPG em seus emails, e mensagens
+
+<a style="color: blue">[6]</a> Como Usar GPG
+
+Bom vamos primeiro vamos baixar os ultilitarios necessarios para criar as nossas chaves..
+<div class="box-container"><code><center><h3>[terminal]</h3></center>dem0n@h3ll:~$ sudo apt install gpg
+[sudo] password for dem0n:
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+gpg is already the newest version (2.2.40-1.1).
+gpg set to manually installed.
+The following packages were automatically installed and are no longer required:
+  libexo-2-0 libexo-common libxfce4ui-2-0 libxfce4ui-common
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 4 not upgraded.
+dem0n@h3ll:~$
+</code></div>
+no meu caso ja temos esse ultilitario.. vamos agora criar nossa chave com o comando basico <b>gpg --gen-key</b>
+<div class="box-container"><code><center><h3>[terminal]</h3></center>dem0n@h3ll:~$ gpg --gen-key
+gpg (GnuPG) 2.2.40; Copyright (C) 2022 g10 Code GmbH
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Note: Use "gpg --full-generate-key" for a full featured key generation dialog.
+
+GnuPG needs to construct a user ID to identify your key.
+
+Real name: detrew
+Email address: detrew@detrew.com
+You selected this USER-ID:
+    "detrew <detrew@detrew.com>"
+
+Change (N)ame, (E)mail, or (O)kay/(Q)uit? o
+We need to generate a lot of random bytes. It is a good idea to perform
+some other action (type on the keyboard, move the mouse, utilize the
+disks) during the prime generation; this gives the random number
+generator a better chance to gain enough entropy.
+We need to generate a lot of random bytes. It is a good idea to perform
+some other action (type on the keyboard, move the mouse, utilize the
+disks) during the prime generation; this gives the random number
+generator a better chance to gain enough entropy.
+gpg: revocation certificate stored as '/home/dem0n/.gnupg/openpgp-revocs.d/0958EE943EF16B122C839E0DDC1EF3A3B35033AA.rev'
+public and secret key created and signed.
+
+pub   rsa3072 2023-09-21 [SC] [expires: 2025-09-20]
+      0958EE943EF16B122C839E0DDC1EF3A3B35033AA
+uid                      detrew <detrew@detrew.com>
+sub   rsa3072 2023-09-21 [E] [expires: 2025-09-20]
+</code></div>
+Você ve que ele pede coisas como um nome e email e senha, a senha foi colocada atravez de um popup que apareceu, e coloque o seu email referente a qual você usa, no meu exemplo é apenas um <b>detrew@detrew.com</b>
+vamos receber tambem um certificado de revogação como da para ver que ele fica armazenado em .gnupg/openpgp-revocs.d/ isso é como se fosse um codigo de recuperação para caso de alguma coisa com sua chave privada
+enfim, sabendo disso temos abaixo o uid da nossa chave e quanto tempo ela vai durar que no nosso caso é 2 anos, isso foi apenas uma criação basica de chave caso queira algo mais detalhado você pode dar o comando
+<b>gpg --full-generate-key</b> para gerar uma chave completa com suas preferencias :D
+bom criamos a chave, e agora? bom para você verificar quais chaves estão no seu linux você pode dar o comando <b>gpg --list-secret-keys</b> e <b>gpg --list-public-keys</b> segue abaixo um exmeplo desse comando em ação com comentarios
+<div class="box-container"><code><center><h3>[terminal]</h3></center>dem0n@h3ll:~$ gpg --list-secret-keys
+/home/dem0n/.gnupg/pubring.kbx
+------------------------------
+sec   rsa3072 2023-09-21 [SC] [expires: 2025-09-20]
+      0958EE943EF16B122C839E0DDC1EF3A3B35033AA
+uid           [ultimate] detrew <detrew@detrew.com>
+ssb   rsa3072 2023-09-21 [E] [expires: 2025-09-20]
+
+dem0n@h3ll:~$ gpg --list-public-keys
+/home/dem0n/.gnupg/pubring.kbx
+------------------------------
+pub   rsa3072 2023-09-21 [SC] [expires: 2025-09-20]
+      0958EE943EF16B122C839E0DDC1EF3A3B35033AA
+uid           [ultimate] detrew <detrew@detrew.com>
+sub   rsa3072 2023-09-21 [E] [expires: 2025-09-20]
+
+dem0n@h3ll:~$
+</code></div>
+Agora que você viu que temos as chaves setadas, vamos conseguir agora criptografar uma mensagem e mandar para alguem!
+vamos usar um arquivo de texto como exemplo e vamos criptografar, segue abaixo o terminal:
+<div class="box-container"><code><center><h3>[terminal]</h3></center>dem0n@h3ll:~$ echo "h3llow w0rd" > msg.txt
+dem0n@h3ll:~$ gpg --encrypt --output msg.gpg --recipient detrew@detrew.com msg.txt
+dem0n@h3ll:~$ ls
+msg.gpg  msg.txt
+dem0n@h3ll:~$ cat msg.txt
+h3llow w0rd
+dem0n@h3ll:~$ cat msg.gpg
+$
+բ'�
+y  V!>h7ٌUp�Y�PEkY�Â:��|<�<���ۧ=uՎWx�lVS�X�E�D3�
+ A�{�o<@�M��k՚
+'��pS��:cI���־˦��%L�.w���p�o�n�,Ssh	�,f#3[?;Yi}�f~
+                        b>8EVkP(.tEw)p�Cqhru��D�[k�lT9��1Gƹ%c&d���%{�WztⳌPB�&��
+                                                                               %h<�!�e8��Ұ=�IȊҴx��&w}b:Lg1)oYEZSM2�xi(�c
+                                                                                                                        Iߪ,6�W�L�9Վ+S)dem0n@h3ll:~/gpg-test$
+dem0n@h3ll:~$
+</div></code>
+
+Vamos explicar agora o comando que eu fiz.. o <b>--encrypt</b> é para obviamente encryptar a mesnagem <b>--output</b> é para definir o arquivo de saida, o <b>--recipient</b> é para definir o destinatario que no nosso caso é nois mesmo
+Lembrando que é necessario ter a chave PUBLICA da pessoa para fazer o comando fluir corretamente.
+
+-Mais como pegar a chave publica e colocar no gpg?
+Simples, usando o comando <b>gpg --import</b> + a sua chave que vc quer exportar exemplo <b>gpg --import neco.key</b>
+
+-Como eu mandaria minha chave publica para alguem?
+Ultilizando o comando <b>gpg --output key-publica.gpg --export --armor</b> + o id da chave que é aquele numero extenso que você pega quando você lista as chaves em seu chaveiro :D
+
+sabendo dessas informações podemos continuar :)
+
+bom agora temos o arquivo msg.gpg, como isso foi mandado para nois mesmo nois podemos descriptografar sem problemas ultilizando a nossa chave privada e o comando abaixo
+<div class="box-container"><code><center><h3>[terminal]</h3></center>dem0n@h3ll:~$ gpg --decrypt --output msg.txt msg.gpg
+gpg: encrypted with 3072-bit RSA key, ID 24960AD5A227C4DA, created 2023-09-21
+      "detrew <detrew@detrew.com>"
+dem0n@h3ll:~/gpg-test$ ls
+msg.gpg  msg.txt
+dem0n@h3ll:~/gpg-test$ cat msg.txt
+h3llow w0rd
+</div></code>
+Vamos Repassar a historia para você mandar um arquivo criptografado com gpg:
+
+- Crie seu par de chaves com: <b>gpg --gen-key</b>
+- Liste sua Chave publica usando: <b>gpg --list-public-key</b>
+- Mande sua chave Publica gpg para seu amigo ou qualquer pessoa usando: <b>gpg --output pub-key.gpg --armor --export id_da_chave_publica</b>
+- O seu amigo ou a pessoa vai encryptar a mensagem: <b>gpg --encrypt --output arquivo.gpg --recipient email_da_chave arquivo.txt</b>
+- E você vai descriptar usando o comando: <b>gpg --decrypt --output arquivo-decriptografado.txt arquivo.gpg</b>
+
+Isso é o basico de GPG tem varios comandos que eu não citei mais isso é o basico para mensagens e emails! caso queira estudar mais a fundo va em frente!
+
+Enfim, agora vamos para algo que poucas pessoas falem sobre.. criptografia de disco!
+
+<a style="color: blue">[6]</a> Criptografia de disco
+
 Criptografia de disco é algo importante para sua segurança, não adianta você usar tudo para se defender virtualmente mais não cuidar da sua parte fisica como seu hd, se alguem pegar seu hd eles vão ter acesso a qualquer tipo de informação do seu hd.
 por isso que vamos falar sobre criptografia no seu disco para que caso ouver isso niguem podera acessar seus arquivos :)
 bom para linux eu não preciso nem dizer que existe o LUKS para te ajudar na criptografia, e que ele se encontra em qualquer menu de instação dessas distro mais atuais, fora que ele suporta metodos de criptografia como AES, Serpent e Twofish
-e ele esta disponivel na maioria das distribuições linux, então não a desculpa para não ultilizar.. 
-no windows a coisa fica mais diferente com seus limites de criptografia sendo limitado pela microsoft porem existe uns meios de colocar LUKS no windows.. um deles sendo usando o <a href="https://en.wikipedia.org/wiki/FreeOTFE">FreeOTFE</a> que é um encriptador de disco que foi descontinuado porem ele foi descontinuado e não tenho 100% de certeza que funciona 
+e ele esta disponivel na maioria das distribuições linux, então não a desculpa para não ultilizar..
+no windows a coisa fica mais diferente com seus limites de criptografia sendo limitado pela microsoft porem existe uns meios de colocar LUKS no windows.. um deles sendo usando o <a href="https://en.wikipedia.org/wiki/FreeOTFE">FreeOTFE</a> que é um encriptador de disco que foi descontinuado porem ele foi descontinuado e não tenho 100% de certeza que funciona
 em dispotivos atuais como windows 11 porem de contra partida temos o <a href="https://diskcryptor.org/">Diskcryptor</a> que é uma alternativa opensource para o bitlocker que possue suporte as mesmas criptografias do LUKS que eu citei acima, e apenas usando interface grafica.
 uma nota que eu quero deixar para o diskcryptor é que eles possue um artigo sobre por que o Bitlocker não é seguro, recomendo darem uma olhada depois <a href="https://diskcryptor.org/why-not-bitlocker/">https://diskcryptor.org/why-not-bitlocker/</a>
-seguindo isso temos tmb um ecrypter bem famoso que é o <a href="https://www.veracrypt.fr/code/VeraCrypt/">Veracrypt</a> aonde ele é opensource e tem niveis de camadas, e tem como selecionar ciclos para seus arquivos excluidos, isso ajuda e muito a ter o disco mais privado, fora que ele é Opensource :D então caso queira compilar você propio o codigo sinta-se a vontade :D
-agora sim temos criptografia de ponta a ponta desde da parte web tanto da parte fisica, temos maneiras seguras de mandar emails e de navegar na internet. logo é apenas aproveitar uma parte de você estando anonima :D porem não é só isso que vai te fazer ficar anonimo tem varias coisas que eu deixei de falar aqui 
-uma delas sendo gpg e pgp que eu não comentei, não cheguei a falar tambem de clients irc e xmpp porem isso vocês facilmente vão achar em umas pesquisas na internet 
-eu queria mostrar serviços que eu ultilizo no dia a dia e que eu aprendi a usar.. espero que tenham gostado dos meu artigo sobre anonimato e ate a proxima p-pe-pe-pessoal -w-
+seguindo isso temos tmb um ecrypter bem famoso que é o <a href="https://www.veracrypt.fr/code/VeraCrypt/">Veracrypt</a> aonde ele é opensource e tem niveis de camadas, e tem como selecionar ciclos para seus arquivos excluidos, isso ajuda e muito a ter o disco mais privado, fora que ele é Opensource :D então caso queira compilar você propio o codigo sinta-se a vontade
 
-                        ______                     
-_________        .---"""      """---.              
-:______.-':      :  .--------------.  :             
-| ______  |      | :Cryptlvm volume : |             
-|:______B:|      | |Password: ??????| |             
-|:______B:|      | |                | |             
-|:______B:|      | |                | |             
-|         |      | |    Success!    | |             
-|:_____:  |      | |                | |             
-|    ==   |      | :                : |             
-|       O |      :  '--------------'  :             
-|       o |      :'---...______...---'              
-|       o |-._.-i___/'             \._              
-|'-.____o_|   '-.   '-...______...-'  `-._          
-:_________:      `.____________________   `-.___.-. 
+<a style="color: blue">[7]</a> Comprar Com Segurança
+agora temos que falar tambem sobre um topico importante que seria boas praticas na hora de fazer uma compra online, pois quando você compra normalmente sempre é via um cartão de credito, e essas coisas que bom não preciso falar que o anonimato cai por terra ai
+vamos falar de uma coisa que é ultilizada a muito tempo e que não é centralizada, sim exatamente criptomoedas.. eu não sou aqueles xama de cripto que sabe de cabo a rabo como funciona porem posso te ajudar a como entender o basico sobre e como fazer comprar e recomendar
+lugares para fazer comprar e carteiras para usar e criptos para comprar.. de carteira para usar eu recomendo a exodus que é uma carteira da exodus que tem para todas as plataformas, fora que é a mais simplesinha de mexer e criar as coisas..
+sobre moedas eu recomendaria 3, Etherium, monero e bitcoin.. são sempre estaveis e ate que é bem facil de comprar monero e ether hoje em dia...
+
+- ok mais não é todo lugar que aceita cripto como moeda
+é realmente mais caso tenha algum que aceite. compre, tambem existe outras maneiras de comprar com um cartão sem precisar expor seus dados, capiche?
+- é facil de mexer?
+se eu consegui a uns messes apenas vendo video, creio que vocês consegue, vamos ir a frente!
+
+eu não sou expecialista porem queria passar essa visão sobre compras e cripto...
+
+<a style="color: blue">[8]</a> Boas praticas (Finalização)
+
+Bom para finalizar esse guia queria explicar sobre praticas que eu tomo no meu dia a dia tambem, uma delas que é o esencial é sempre ultilizar uma senha forte, pegue alguma frase grande, mude algumas coisas caracteres, adicione (&%$*) essas coisas do genero
+não ultilize a mesma senha para tudo, pois se sua senha vazar, todas vão junto... quando for remover um arquivo, não ultilize o classico rm.. remova ultilizando shred e logo sim remova ou faça que nem eu e deixe isso no seu .bashrc
+alias rm="shred -uv -n 5" e seja feliz hdwuhdawu assim não vai ter como recuperar, pois vai ser preenchido com bytes nulos.
+
+é isso amigos eu sei que o texto ficou grande mais queria atualizar depois de mais pesquisa que eu fiz... eu sei que algumas coisas podem ser forçadas like fugitivo da KGB mais é uma coisa que eu acho daora explicar e mostrar para o pessoal sobre
+espero que fiquem bem.. desculpe caso eu errei algo ou falei alguma coisa sem nexo.. estou aberto para criticas e estou disponivel para qualquer duvida no meu discord <b>bezumiya</b> até!
+
+
+
+
+
+Às vezes, o escândalo não tem relação com a lei que foi quebrada, e sim com o que a lei permite.
+~ Edward Snowden
+
+                        ______
+_________        .---"""      """---.
+:______.-':      :  .--------------.  :
+| ______  |      | :Cryptlvm volume : |
+|:______B:|      | |Password: ??????| |
+|:______B:|      | |                | |
+|:______B:|      | |                | |
+|         |      | |    Success!    | |
+|:_____:  |      | |                | |
+|    ==   |      | :                : |
+|       O |      :  '--------------'  :
+|       o |      :'---...______...---'
+|       o |-._.-i___/'             \._
+|'-.____o_|   '-.   '-...______...-'  `-._
+:_________:      `.____________________   `-.___.-.
                 .'.eeeeeeeeeeeeeeeeee.'.      :___:
-              .'.eeeeeeeeeeeeeeeeeeeeee.'.         
+              .'.eeeeeeeeeeeeeeeeeeeeee.'.
              :____________________________:
 
 </body>
